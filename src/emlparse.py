@@ -47,6 +47,12 @@ def convert(path):
         subject = re.sub(r'[^\w\s]', ' ', subject.lower())
         bodys = re.sub(r'[^\w\s]', ' ', bodys.lower())
 
+        # Remove escape character^M
+        subject = subject.replace('\n', ' ')
+        bodys = bodys.replace('\n', ' ')
+        subject = subject.replace('\r', ' ')
+        bodys = bodys.replace('\r', ' ')
+
         # Ignore the empty string
         if subject == '' or bodys == '':
             continue
@@ -65,6 +71,6 @@ def convert(path):
                 continue
 
     data = pd.DataFrame(data, columns=['Subject', 'Content'])
-    data.to_csv('mail.csv')
+    data.to_csv('D:\\workspace\\conestoga\\PROG8245\\Project\\PROG8245NLP\\csv\\mail.csv')
 
 convert('D:\\workspace\\conestoga\\PROG8245\\Project\\bckgmail\\GMAIL')
