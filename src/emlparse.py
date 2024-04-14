@@ -47,7 +47,7 @@ def convert(path):
         subject = re.sub(r'[^\w\s]', ' ', subject.lower())
         bodys = re.sub(r'[^\w\s]', ' ', bodys.lower())
 
-        # Remove escape character^M
+        # Remove escape character
         subject = subject.replace('\n', ' ')
         bodys = bodys.replace('\n', ' ')
         subject = subject.replace('\r', ' ')
